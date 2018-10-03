@@ -1,6 +1,9 @@
+using MeetingPortal.DAL;
+using MeetingPortal.DAL.Services;
 using System;
 
 using Unity;
+using Unity.AspNet.Mvc;
 
 namespace MeetingPortal
 {
@@ -41,7 +44,9 @@ namespace MeetingPortal
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<MeetingContext>(new PerRequestLifetimeManager());
+            container.RegisterType<IContentService, ContentService>(new PerRequestLifetimeManager());
+            container.RegisterType<IUserService, UserService>(new PerRequestLifetimeManager());
         }
     }
 }
