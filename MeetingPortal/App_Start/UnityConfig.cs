@@ -1,9 +1,16 @@
 using MeetingPortal.DAL;
 using MeetingPortal.DAL.Services;
 using System;
-
+using MeetingPortal.DAL.Entities;
 using Unity;
 using Unity.AspNet.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Unity.Injection;
+using System.Data.Entity;
+using MeetingPortal.App_Start;
+using System.Web;
 
 namespace MeetingPortal
 {
@@ -44,9 +51,14 @@ namespace MeetingPortal
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            container.RegisterType<MeetingContext>(new PerRequestLifetimeManager());
+            container.RegisterType<DbContext, MeetingContext>(new PerRequestLifetimeManager());
             container.RegisterType<IContentService, ContentService>(new PerRequestLifetimeManager());
+
             container.RegisterType<IUserService, UserService>(new PerRequestLifetimeManager());
+            container.RegisterType<IUserStore<PortalUser>, UserStore<PortalUser>>(new PerRequestLifetimeManager());
+            container.RegisterType<ApplicationUserManager>(new PerRequestLifetimeManager());
+            container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+            container.RegisterType<ApplicationSignInManager>(new PerRequestLifetimeManager());
         }
     }
 }

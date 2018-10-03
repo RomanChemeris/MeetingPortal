@@ -59,8 +59,8 @@
     <Compile Include="MeetingContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContentService.cs" />
-    <Compile Include="Services\IContentService.cs" />
-    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="ServiceInterfaces\IContentService.cs" />
+    <Compile Include="ServiceInterfaces\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

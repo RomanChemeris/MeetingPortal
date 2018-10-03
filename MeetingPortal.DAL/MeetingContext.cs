@@ -17,6 +17,13 @@ namespace MeetingPortal.DAL
             Database.SetInitializer(new CreateDatabaseIfNotExists<MeetingContext>());
         }
 
+        public static MeetingContext Create()
+        {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<MeetingContext>());
+            var context = new MeetingContext();
+            return context;
+        }
+
         public virtual IDbSet<MeetingRoom> MeetingRooms { get; set; }
 
         public virtual IDbSet<MeetingRequest> MeetingRequests { get; set; }
