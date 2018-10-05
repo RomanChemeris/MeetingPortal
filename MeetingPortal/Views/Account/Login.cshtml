@@ -6,6 +6,7 @@
     <div class="center-inner">
         @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
         {
+            @Html.AntiForgeryToken()
             <h1>Вход в личный кабинет</h1>
             <div class="form-group">
                 @Html.LabelFor(x => x.Email)
@@ -15,7 +16,10 @@
                 @Html.LabelFor(x => x.Password)
                 @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
             </div>
-
+            
+            <div class="alert-danger">
+                @Html.ValidationSummary()
+            </div>
             <button type="submit" class="btn btn-primary btn-block">Войти</button>
         }
 </div>

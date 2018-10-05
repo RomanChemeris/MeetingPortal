@@ -14,14 +14,13 @@ namespace MeetingPortal.DAL
     {
         public MeetingContext() : base("MeetingConnectionString")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<MeetingContext>());
+            Database.SetInitializer<MeetingContext>(null);
         }
 
         public static MeetingContext Create()
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<MeetingContext>());
-            var context = new MeetingContext();
-            return context;
+            Database.SetInitializer<MeetingContext>(null);
+            return new MeetingContext();
         }
 
         public virtual IDbSet<MeetingRoom> MeetingRooms { get; set; }

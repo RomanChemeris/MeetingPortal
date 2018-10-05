@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meeting Portal</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Meeting Portal v1.0</a>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+                <nav class="bd-links">
+                    <ul class="nav bd-sidenav">
+                        <li>
+                            <a href="/">Главная</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AddMeetingRoom", "Home")">Добавить переговорную</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5" role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

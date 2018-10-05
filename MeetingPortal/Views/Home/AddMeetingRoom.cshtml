@@ -1,0 +1,41 @@
+﻿@model MeetingRoomViewModel
+@{
+    ViewBag.Title = "Добавление комнаты переговоров";
+    Layout = "~/Views/Shared/_LayoutCore.cshtml";
+}
+
+<h2>Добавление комнаты переговоров</h2>
+
+@using (Html.BeginForm("AddMeetingRoom", "Home", FormMethod.Post))
+{
+    <div class="alert-info">
+        @(!string.IsNullOrEmpty(ViewBag.IsSuccess) ? "Комната для переговоров успешно создана" : "")
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.NumberOfChair)
+        @Html.TextBoxFor(x => x.NumberOfChair, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            @Html.CheckBoxFor(x => x.HaveMarkerBoard, new { @class = "form-check-input" })
+            @Html.LabelFor(x => x.HaveMarkerBoard, new { @class = "form-check-label" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            @Html.CheckBoxFor(x => x.HaveProjector, new { @class = "form-check-input" })
+            @Html.LabelFor(x => x.HaveProjector, new { @class = "form-check-label" })
+        </div>
+    </div>
+
+    <div class="alert-danger">
+        @Html.ValidationSummary()
+    </div>
+    <button type="submit" class="btn btn-primary" @(!string.IsNullOrEmpty(ViewBag.IsSuccess) ? "disabled" : "")>
+        Добавить
+    </button>
+}

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MeetingPortal.Core.Models
+namespace MeetingPortal.Core.ViewModels
 {
     public class LoginViewModel
     {
@@ -14,7 +14,7 @@ namespace MeetingPortal.Core.Models
         [EmailAddress()]
         public string Email { get; set; }
 
-        [Microsoft.Build.Framework.Required]
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         [MinLength(6, ErrorMessage = "Минимальная длина пароля 6 символов")]
