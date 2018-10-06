@@ -19,6 +19,8 @@
                         <th scope="col">
                             Наличие маркерной доски
                         </th>
+                        <th scope="col">
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +45,9 @@ class MeetingRoom extends React.Component {
                 <td>{this.props.data.NumberOfChair}</td>
                 <td>{this.getIcon(this.props.data.HaveMarkerBoard)}</td>
                 <td>{this.getIcon(this.props.data.HaveProjector)}</td>
+                <td>
+                    <a href={"/home/EditMeetingRoom/" + this.props.data.Id} className="btn btn-primary">Редактировать</a>
+                </td>
             </tr>
         );
     }
@@ -64,7 +69,6 @@ class MeetingBox extends React.Component {
     }
     componentDidMount() {
         this.loadMeetingRoomsFromServer();
-        //window.setInterval(() => this.loadCommentsFromServer(), this.props.pollInterval);
     }
     render() {
         return (

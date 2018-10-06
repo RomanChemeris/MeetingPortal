@@ -50,6 +50,22 @@ namespace MeetingPortal.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> EditMeetingRoom(int id)
+        {
+            return View(await ContentService.GetMeetingRoomById(id));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditMeetingRoom(MeetingRoomViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await ContentService.EditMeetingRoom(model);
+                ViewBag.IsSuccess = "ok";
+            }
+            return View(model);
+        }
+
         [OutputCache(Location = OutputCacheLocation.None)]
         public async Task<ActionResult> Rooms()
         {

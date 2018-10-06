@@ -9,6 +9,8 @@ namespace MeetingPortal.Core.ViewModels
 {
     public class MeetingRoomViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         [Display(Name = "Название комнаты")]
         public string Name { get; set; }

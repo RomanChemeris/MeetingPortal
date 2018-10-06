@@ -248,6 +248,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\MeetingRoomsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -346,6 +347,7 @@
     <Content Include="Views\Shared\_leftMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutCore.cshtml" />
     <Content Include="Views\Home\AddMeetingRoom.cshtml" />
+    <Content Include="Views\Home\EditMeetingRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

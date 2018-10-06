@@ -55,5 +55,33 @@ namespace MeetingPortal.DAL.Services
                 await Context.SaveChangesAsync();
             }
         }
+
+        public async Task<MeetingRoomViewModel> GetMeetingRoomById(int id)
+        {
+            return await Context.MeetingRooms
+                .Where(x => x.Id == id)
+                .Select(x => new MeetingRoomViewModel
+                {
+                    Id = x.Id,
+                    HaveMarkerBoard = x.HaveMarkerBoard,
+                    HaveProjector = x.HaveProjector,
+                    NumberOfChair = x.NumberOfChair,
+                    Name = x.Name
+                })
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task EditMeetingRoom(MeetingRoomViewModel model)
+        {
+            var room = await Context.MeetingRooms.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if (room != null)
+            {
+                room.Name = model.Name;
+                room.HaveMarkerBoard = model.HaveMarkerBoard;
+                room.HaveProjector = model.HaveProjector;
+                room.NumberOfChair = model.NumberOfChair;
+                await Context.SaveChangesAsync();
+            }
+        }
     }
 }
