@@ -11,6 +11,7 @@ using Unity.Injection;
 using System.Data.Entity;
 using MeetingPortal.App_Start;
 using System.Web;
+using MeetingPortal.DAL.ServiceInterfaces;
 
 namespace MeetingPortal
 {

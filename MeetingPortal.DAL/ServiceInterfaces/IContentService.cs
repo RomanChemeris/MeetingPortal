@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MeetingPortal.Core.ViewModels;
 using MeetingPortal.DAL.Entities;
 
-namespace MeetingPortal.DAL.Services
+namespace MeetingPortal.DAL.ServiceInterfaces
 {
     public interface IContentService
     {
         Task<List<MeetingRoom>> GetMeetingRooms();
         Task CreateMeetingRoom(MeetingRoom meetingRoom);
+        Task<List<MeetingRequestViewModel>> GetRoomRequests();
+        Task ModerateRoomRequest(int id, bool accept);
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using MeetingPortal.Core.ViewModels;
 using MeetingPortal.DAL.Entities;
+using MeetingPortal.DAL.ServiceInterfaces;
 using MeetingPortal.DAL.Services;
 
 namespace MeetingPortal.Controllers
@@ -52,6 +54,20 @@ namespace MeetingPortal.Controllers
         public async Task<ActionResult> Rooms()
         {
             return Json(await ContentService.GetMeetingRooms(), JsonRequestBehavior.AllowGet);
+        }
+
+        [OutputCache(Location = OutputCacheLocation.None)]
+        public async Task<ActionResult> RoomRequests()
+        {
+            return Json(await ContentService.GetRoomRequests(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [OutputCache(Location = OutputCacheLocation.None)]
+        public async Task<ActionResult> ModerateRoomRequest(int id, bool accept)
+        {
+            await ContentService.ModerateRoomRequest(id, accept);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

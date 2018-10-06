@@ -67,6 +67,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MeetingPortal.Core\MeetingPortal.Core.csproj">
+      <Project>{0873DD38-ED93-4EA6-B469-3DF4F59A627A}</Project>
+      <Name>MeetingPortal.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

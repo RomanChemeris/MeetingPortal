@@ -68,8 +68,8 @@ class MeetingBox extends React.Component {
     }
     render() {
         return (
-            <div className="meeting-box">
-                <h1>Список переговорных</h1>
+            <div className="meeting-box animated fadeInUp">
+                <h2>Список переговорных</h2>
                 <MeetingTable data={this.state.meetingRooms} />
             </div>
         );
@@ -77,5 +77,5 @@ class MeetingBox extends React.Component {
 }
 
 ReactDOM.render(
-    <MeetingBox url="home/rooms" />, document.getElementById('content')
+    <MeetingBox url="home/rooms" />, document.getElementById('meetingRooms')
 );
