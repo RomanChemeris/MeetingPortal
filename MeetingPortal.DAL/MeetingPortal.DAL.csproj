@@ -58,10 +58,10 @@
     <Compile Include="Entities\PortalUser.cs" />
     <Compile Include="MeetingContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApiContentService.cs" />
     <Compile Include="Services\ContentService.cs" />
     <Compile Include="ServiceInterfaces\IContentService.cs" />
-    <Compile Include="ServiceInterfaces\IUserService.cs" />
-    <Compile Include="Services\UserService.cs" />
+    <Compile Include="ServiceInterfaces\IApiContentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

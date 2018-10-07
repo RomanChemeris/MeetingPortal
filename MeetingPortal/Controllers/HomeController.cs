@@ -85,5 +85,11 @@ namespace MeetingPortal.Controllers
             await ContentService.ModerateRoomRequest(id, accept);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        public async Task<ActionResult> RemoveMeetingRoom(int id)
+        {
+            await ContentService.RemoveMeetingRoom(id);
+            return RedirectToAction("Index");
+        }
     }
 }

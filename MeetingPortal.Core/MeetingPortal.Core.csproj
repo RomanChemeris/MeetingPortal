@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\MeetingRoomApiModel.cs" />
+    <Compile Include="Models\RoomBookingDateApiModel.cs" />
     <Compile Include="ViewModels\MeetingRequestViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,13 +18,11 @@ namespace MeetingPortal.Controllers
     {
         private ApplicationSignInManager SignInManager;
         private ApplicationUserManager UserManager;
-        private IUserService UserService;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserService userService)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            UserService = userService;
         }
 
         [AllowAnonymous]

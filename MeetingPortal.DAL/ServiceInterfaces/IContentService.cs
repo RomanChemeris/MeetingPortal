@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MeetingPortal.Core.Models;
 using MeetingPortal.Core.ViewModels;
 using MeetingPortal.DAL.Entities;
 
@@ -13,5 +14,6 @@ namespace MeetingPortal.DAL.ServiceInterfaces
         Task ModerateRoomRequest(int id, bool accept);
         Task<MeetingRoomViewModel> GetMeetingRoomById(int id);
         Task EditMeetingRoom(MeetingRoomViewModel model);
+        Task RemoveMeetingRoom(int id);
     }
 }

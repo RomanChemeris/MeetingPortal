@@ -55,7 +55,7 @@ namespace MeetingPortal
             container.RegisterType<DbContext, MeetingContext>(new PerRequestLifetimeManager());
             container.RegisterType<IContentService, ContentService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IUserService, UserService>(new PerRequestLifetimeManager());
+            container.RegisterType<IApiContentService, ApiContentService>(new PerRequestLifetimeManager());
             container.RegisterType<IUserStore<PortalUser>, UserStore<PortalUser>>(new PerRequestLifetimeManager());
             container.RegisterType<ApplicationUserManager>(new PerRequestLifetimeManager());
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));

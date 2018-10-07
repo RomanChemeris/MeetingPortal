@@ -39,4 +39,5 @@
     <button type="submit" class="btn btn-primary" @(!string.IsNullOrEmpty(ViewBag.IsSuccess) ? "disabled" : "")>
         Сохранить
     </button>
+    @Html.ActionLink("Удалить", "RemoveMeetingRoom", "Home", new { id = Model.Id }, new { @class = "btn btn-danger" })
 }

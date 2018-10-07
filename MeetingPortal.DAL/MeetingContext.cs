@@ -23,8 +23,8 @@ namespace MeetingPortal.DAL
             return new MeetingContext();
         }
 
-        public virtual IDbSet<MeetingRoom> MeetingRooms { get; set; }
+        public virtual DbSet<MeetingRoom> MeetingRooms { get; set; }
 
-        public virtual IDbSet<MeetingRequest> MeetingRequests { get; set; }
+        public virtual DbSet<MeetingRequest> MeetingRequests { get; set; }
     }
 }

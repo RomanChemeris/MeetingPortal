@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MeetingPortal.Core.Models;
 using MeetingPortal.Core.ViewModels;
 using MeetingPortal.DAL.Entities;
 using MeetingPortal.DAL.ServiceInterfaces;
@@ -80,6 +81,17 @@ namespace MeetingPortal.DAL.Services
                 room.HaveMarkerBoard = model.HaveMarkerBoard;
                 room.HaveProjector = model.HaveProjector;
                 room.NumberOfChair = model.NumberOfChair;
+                await Context.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveMeetingRoom(int id)
+        {
+            var room = await Context.MeetingRooms.FirstOrDefaultAsync(x => x.Id == id);
+            if (room != null)
+            {
+                Context.MeetingRequests.RemoveRange(Context.MeetingRequests.Where(x => x.Room.Id == id));
+                Context.MeetingRooms.Remove(room);
                 await Context.SaveChangesAsync();
             }
         }
