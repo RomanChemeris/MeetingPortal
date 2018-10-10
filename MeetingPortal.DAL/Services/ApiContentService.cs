@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using MeetingPortal.Core.Models;
 using MeetingPortal.DAL.Entities;
 using MeetingPortal.DAL.ServiceInterfaces;
@@ -82,6 +83,20 @@ namespace MeetingPortal.DAL.Services
                 });
                 await Context.SaveChangesAsync();
             }
+        }
+
+        public async Task<List<NotificationApiModel>> GetLastNotifications()
+        {
+            return await Context.RequestNotifications.OrderByDescending(x => x.Created).Take(5).Select(x =>
+                new NotificationApiModel
+                {
+                    Created = x.Created,
+                    RoomName = x.Request.Room.Name,
+                    BookingTimeFrom = x.Request.BookingTimeFrom,
+                    BookingTimeTo = x.Request.BookingTimeTo,
+                    Status = x.Request.IsAccepted,
+                    RequestName = x.Request.Name
+                }).ToListAsync();
         }
     }
 }

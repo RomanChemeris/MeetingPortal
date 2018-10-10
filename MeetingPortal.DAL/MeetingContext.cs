@@ -24,7 +24,7 @@ namespace MeetingPortal.DAL
         }
 
         public virtual DbSet<MeetingRoom> MeetingRooms { get; set; }
-
         public virtual DbSet<MeetingRequest> MeetingRequests { get; set; }
+        public virtual DbSet<RequestNotification> RequestNotifications { get; set; }
     }
 }

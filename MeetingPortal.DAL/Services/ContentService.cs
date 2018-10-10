@@ -53,6 +53,13 @@ namespace MeetingPortal.DAL.Services
             if (request != null)
             {
                 request.IsAccepted = accept;
+
+                Context.RequestNotifications.Add(new RequestNotification
+                {
+                    Created = DateTime.Now,
+                    Request = request
+                });
+
                 await Context.SaveChangesAsync();
             }
         }

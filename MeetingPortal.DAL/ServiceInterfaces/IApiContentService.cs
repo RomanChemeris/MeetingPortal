@@ -10,5 +10,6 @@ namespace MeetingPortal.DAL.ServiceInterfaces
         Task<List<MeetingRoomApiModel>> GetMeetingRooms();
         Task<List<RoomBookingDateApiModel>> GetRoomInfo(int id);
         Task CreateMeetingRequest(int roomId, string name, DateTime fromTime, DateTime toTime);
+        Task<List<NotificationApiModel>> GetLastNotifications();
     }
 }

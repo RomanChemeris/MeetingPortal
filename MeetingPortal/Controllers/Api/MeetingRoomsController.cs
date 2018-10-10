@@ -30,6 +30,11 @@ namespace MeetingPortal.Controllers.Api
             return await ApiContentService.GetRoomInfo(id);
         }
 
+        public async Task<List<NotificationApiModel>> GetLastNotifications()
+        {
+            return await ApiContentService.GetLastNotifications();
+        }
+
         [HttpPost]
         public async Task<IHttpActionResult> AddMeetingRequest([FromBody]MeetingCreateRequest request)
         {
