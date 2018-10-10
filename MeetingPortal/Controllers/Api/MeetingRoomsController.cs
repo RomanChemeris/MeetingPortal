@@ -30,9 +30,11 @@ namespace MeetingPortal.Controllers.Api
             return await ApiContentService.GetRoomInfo(id);
         }
 
-        public async Task AddMeetingRequest(int roomId, string name, DateTime fromTime, DateTime toTime)
+        [HttpPost]
+        public async Task<IHttpActionResult> AddMeetingRequest([FromBody]MeetingCreateRequest request)
         {
-            await ApiContentService.CreateMeetingRequest(roomId, name, fromTime, toTime);
+            await ApiContentService.CreateMeetingRequest(request.RoomId, request.Name, request.FromTime, request.ToTime);
+            return Ok();
         }
     }
 }

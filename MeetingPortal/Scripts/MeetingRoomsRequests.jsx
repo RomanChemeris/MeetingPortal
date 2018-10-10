@@ -64,15 +64,6 @@ class MeetingBoxRequests extends React.Component {
         this.state = { meetingRequests: [] };
         this.handleBtnSubmit = this.handleBtnSubmit.bind(this);
     }
-    loadMeetingRequestsFromServer() {
-        const xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
-        xhr.onload = () => {
-            const data = JSON.parse(xhr.responseText);
-            this.setState({ meetingRequests: data });
-        };
-        xhr.send();
-    }
     handleBtnSubmit(obj) {
         const data = new FormData();
         data.append('id', obj.id);
@@ -86,6 +77,15 @@ class MeetingBoxRequests extends React.Component {
     componentDidMount() {
         this.loadMeetingRequestsFromServer();
         window.setInterval(() => this.loadMeetingRequestsFromServer(), this.props.pollInterval);
+    }
+    loadMeetingRequestsFromServer() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.url, true);
+        xhr.onload = () => {
+            const data = JSON.parse(xhr.responseText);
+            this.setState({ meetingRequests: data });
+        };
+        xhr.send();
     }
     render() {
         return (

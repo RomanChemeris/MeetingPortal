@@ -58,6 +58,9 @@ class MeetingBox extends React.Component {
         super(props);
         this.state = { meetingRooms: [] };
     }
+    componentDidMount() {
+        this.loadMeetingRoomsFromServer();
+    }
     loadMeetingRoomsFromServer() {
         const xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
@@ -66,9 +69,6 @@ class MeetingBox extends React.Component {
             this.setState({ meetingRooms: data });
         };
         xhr.send();
-    }
-    componentDidMount() {
-        this.loadMeetingRoomsFromServer();
     }
     render() {
         return (

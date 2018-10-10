@@ -11,5 +11,7 @@ namespace MeetingPortal.Core.Models
         public DateTime BookingFrom { get; set; }
         public DateTime BookingTo { get; set; }
         public string Name { get; set; }
+
+        public string BookingTime => $"{BookingFrom:D} {BookingFrom:HH:mm}-{BookingTo:HH:mm}";
     }
 }

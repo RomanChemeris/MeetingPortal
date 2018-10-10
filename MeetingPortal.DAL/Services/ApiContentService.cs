@@ -29,16 +29,27 @@ namespace MeetingPortal.DAL.Services
                     (x, y) => new { Room = x, Requests = y })
                 .SelectMany(
                     x => x.Requests.DefaultIfEmpty(),
-                    (x, y) => new MeetingRoomApiModel
+                    (room, request) => new { room.Room, request })
+                .OrderBy(x => x.request.BookingTimeFrom)
+                .GroupBy(x => new
                     {
-                        Id = x.Room.Id,
-                        HaveMarkerBoard = x.Room.HaveMarkerBoard,
-                        HaveProjector = x.Room.HaveProjector,
-                        NumberOfChair = x.Room.NumberOfChair,
-                        Name = x.Room.Name,
-                        BookingTimeFrom = y.BookingTimeFrom,
-                        BookingTimeTo = y.BookingTimeTo
-                    }).ToListAsync();
+                        x.Room.Id,
+                        x.Room.Name,
+                        x.Room.HaveMarkerBoard,
+                        x.Room.HaveProjector,
+                        x.Room.NumberOfChair
+                })
+                .Select(x => new MeetingRoomApiModel
+                {
+                    Id = x.Key.Id,
+                    HaveMarkerBoard = x.Key.HaveMarkerBoard,
+                    HaveProjector = x.Key.HaveProjector,
+                    NumberOfChair = x.Key.NumberOfChair,
+                    Name = x.Key.Name,
+                    BookingTimeFrom = x.FirstOrDefault().request.BookingTimeFrom,
+                    BookingTimeTo = x.FirstOrDefault().request.BookingTimeTo
+                })
+                .ToListAsync();
         }
 
         public async Task<List<RoomBookingDateApiModel>> GetRoomInfo(int id)
