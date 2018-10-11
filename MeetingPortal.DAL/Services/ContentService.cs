@@ -97,6 +97,8 @@ namespace MeetingPortal.DAL.Services
             var room = await Context.MeetingRooms.FirstOrDefaultAsync(x => x.Id == id);
             if (room != null)
             {
+                Context.RequestNotifications.RemoveRange(Context.RequestNotifications.Join(
+                    Context.MeetingRequests.Where(x => x.Room.Id == id), n => n.Request.Id, r => r.Id, (n, r) => n));
                 Context.MeetingRequests.RemoveRange(Context.MeetingRequests.Where(x => x.Room.Id == id));
                 Context.MeetingRooms.Remove(room);
                 await Context.SaveChangesAsync();
